@@ -1,0 +1,6 @@
+framework module Pods_StudyWCDB {
+  umbrella header "Pods-StudyWCDB-umbrella.h"
+
+  export *
+  module * { export * }
+}
