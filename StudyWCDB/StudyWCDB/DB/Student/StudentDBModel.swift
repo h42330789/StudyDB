@@ -9,31 +9,23 @@ import Foundation
 import WCDBSwift
 
 final class StudentDBModel: TableCodable {
-    var identifier: Int? = nil
+    var stuId: Int? = nil
     var name: String? = nil
     var age: Int? = nil
    
+    // 定义表字段
     enum CodingKeys: String, CodingTableKey {
         typealias Root = StudentDBModel
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         
-        case identifier
+        case stuId
         case name
         case age
     }
-}
-
-final class ScoreDBModel: TableCodable {
-    var identifier: Int? = nil
-    var studentId: Int? = nil
-    var score: Float? = nil
-   
-    enum CodingKeys: String, CodingTableKey {
-        typealias Root = ScoreDBModel
-        static let objectRelationalMapping = TableBinding(CodingKeys.self)
-        
-        case identifier
-        case studentId
-        case score
+    
+    // 一般ORM，一个model对应一个table
+    static var tableName: String {
+        return "Student_Table"
     }
 }
+
