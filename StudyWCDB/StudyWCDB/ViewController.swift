@@ -17,8 +17,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        testStu()
-        
+//        testStu()
+//        testWebSite()
+        testMessage()
         
         
     }
@@ -91,6 +92,7 @@ class ViewController: UIViewController {
         }
         // 查询数据
         let list = worker.getWebSites()
+        let ob = worker.getWebSite(name: "Google")
         let count = worker.getWebSitesCount()
         let countryCount1 = worker.getWebSitesCountryCount(isDistinct: true)
         let countryCount2 = worker.getWebSitesCountryCount(isDistinct: false)
@@ -106,6 +108,34 @@ class ViewController: UIViewController {
         print(list)
     }
 
-
+    func testMessage() {
+        let worker = MessageDBWorker()
+        if let count = worker.getMsgCount(), count == 0 {
+            // 没有数据，更新数据
+            let datas = Array.init(repeating: 0, count: 10)
+            let msgs = datas.map {_ in
+                let msg = MessageDBModel()
+                msg.msgId = Int64.random(in: 1000..<10000)
+                msg.flag = Int64.random(in: 1000..<10000)
+                msg.chatType = ChatType(rawValue: Int32.random(in: 0..<2))
+                msg.messageType = MessageType(rawValue: Int32.random(in: 0..<3))
+                msg.content = "msg hello \(Int64.random(in: 1000..<10000))"
+                let refMsg = RefMessage()
+                refMsg.msgId = Int64.random(in: 1000..<10000)
+                refMsg.chatType = ChatType(rawValue: Int32.random(in: 0..<2))
+                refMsg.messageType = MessageType(rawValue: Int32.random(in: 0..<3))
+                refMsg.content = "refMsg world \(Int64.random(in: 1..<10))"
+                msg.refMsg = refMsg
+                return msg
+            }
+    
+    
+            let result = worker.addMessages(msgs: msgs)
+            print(result)
+        }
+        // 查询数据
+        let list = worker.getMessages()
+        print(list)
+    }
 }
 

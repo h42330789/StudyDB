@@ -88,14 +88,14 @@ class StudentDBWorker {
 //                print(score, stu)
 //            }
             // 联合查询
-            let query = """
-            SELECT ScoreDBModel.score, ScoreDBModel.identifier
-            FROM User
-            JOIN StudentDBModel ON User.id = Order.userId;
-            """
-            
-            let result: [String] = try db.getuseing
-            print(result)
+//            let query = """
+//            SELECT ScoreDBModel.score, ScoreDBModel.identifier
+//            FROM User
+//            JOIN StudentDBModel ON User.id = Order.userId;
+//            """
+//            
+//            let result: [String] = try db.getr
+//            print(result)
 
         } catch {
             print(error)

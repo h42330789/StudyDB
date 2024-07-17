@@ -40,7 +40,6 @@ class WebSiteDBWorker {
     func addWebSites(sites: [WebSiteDBModel]) -> Bool {
         let db = Database(at: dbPath)
         do {
-            // 没有on就是全量字段插入
             try db.insertOrReplace(sites, intoTable: WebSiteDBModel.tableName)
         } catch {
             print(error)
@@ -52,7 +51,6 @@ class WebSiteDBWorker {
     func getWebSitesCount() -> Int? {
         let db = Database(at: dbPath)
         do {
-            // 没有on就是全量字段插入
             let val = try db.getValue(on: WebSiteDBModel.Properties.id.count(), fromTable: WebSiteDBModel.tableName)
             return val.intValue
         } catch {
@@ -62,7 +60,6 @@ class WebSiteDBWorker {
     func getWebSitesCountryCount(isDistinct: Bool) -> Int? {
         let db = Database(at: dbPath)
         do {
-            // 没有on就是全量字段插入
             let val = try db.getValue(on: WebSiteDBModel.Properties.country.count(isDistinct: isDistinct), fromTable: WebSiteDBModel.tableName)
             return val.intValue
         } catch {
@@ -73,7 +70,6 @@ class WebSiteDBWorker {
         // total与sum等效，但一般sum更常用
         let db = Database(at: dbPath)
         do {
-            // 没有on就是全量字段插入
             let val = try db.getValue(on: WebSiteDBModel.Properties.alexa.total(), fromTable: WebSiteDBModel.tableName)
             return val.intValue
         } catch {
@@ -83,7 +79,6 @@ class WebSiteDBWorker {
     func getWebSiteAlexAvg() -> Int? {
         let db = Database(at: dbPath)
         do {
-            // 没有on就是全量字段插入
             let val = try db.getValue(on: WebSiteDBModel.Properties.alexa.avg(), fromTable: WebSiteDBModel.tableName)
             return val.intValue
         } catch {
@@ -93,7 +88,6 @@ class WebSiteDBWorker {
     func getWebSiteAlexMax() -> Int? {
         let db = Database(at: dbPath)
         do {
-            // 没有on就是全量字段插入
             let val = try db.getValue(on: WebSiteDBModel.Properties.alexa.max(), fromTable: WebSiteDBModel.tableName)
             return val.intValue
         } catch {
@@ -103,7 +97,6 @@ class WebSiteDBWorker {
     func getWebSiteAlexMin() -> Int? {
         let db = Database(at: dbPath)
         do {
-            // 没有on就是全量字段插入
             let val = try db.getValue(on: WebSiteDBModel.Properties.alexa.min(), fromTable: WebSiteDBModel.tableName)
             return val.intValue
         } catch {
@@ -113,7 +106,6 @@ class WebSiteDBWorker {
     func getWebSiteAlexSum() -> Int? {
         let db = Database(at: dbPath)
         do {
-            // 没有on就是全量字段插入
             let val = try db.getValue(on: WebSiteDBModel.Properties.alexa.sum(), fromTable: WebSiteDBModel.tableName)
             return val.intValue
         } catch {
@@ -121,16 +113,27 @@ class WebSiteDBWorker {
         }
     }
     // MARK: - 分页
-    func getWebSites(offset: Int = 0, limit: Int = 0) -> [WebSiteDBModel] {
+    func getWebSites(offset: Int = 0, limit: Int? = nil) -> [WebSiteDBModel] {
         let db = Database(at: dbPath)
         do {
-            // 要初始化表
             // 没有on就是全量字段插入
             let list: [WebSiteDBModel] = try db.getObjects(on: WebSiteDBModel.Properties.all, fromTable: WebSiteDBModel.tableName, limit: 10, offset: offset)
             return list
         } catch {
             print(error)
             return []
+        }
+    }
+    
+    func getWebSite(name: String) -> WebSiteDBModel? {
+        let db = Database(at: dbPath)
+        do {
+            // 没有on就是全量字段插入
+            let obj: WebSiteDBModel? = try db.getObject(on: WebSiteDBModel.Properties.all, fromTable: WebSiteDBModel.tableName, where: WebSiteDBModel.Properties.name == name)
+            return obj
+        } catch {
+            print(error)
+            return nil
         }
     }
     
