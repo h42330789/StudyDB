@@ -26,6 +26,20 @@
 		529743ED2C457703008221BE /* StudyWCDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529743EC2C457703008221BE /* StudyWCDBTests.swift */; };
 		529743F72C457703008221BE /* StudyWCDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529743F62C457703008221BE /* StudyWCDBUITests.swift */; };
 		529743F92C457703008221BE /* StudyWCDBUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529743F82C457703008221BE /* StudyWCDBUITestsLaunchTests.swift */; };
+		573DD7942C48E27200DA264C /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7932C48E27200DA264C /* MessageModel.swift */; };
+		573DD7962C48EB4200DA264C /* TextMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7952C48EB4200DA264C /* TextMessageModel.swift */; };
+		573DD7982C48EB5D00DA264C /* ImageMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7972C48EB5D00DA264C /* ImageMessageModel.swift */; };
+		573DD79A2C48EBAC00DA264C /* MediaMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7992C48EBAB00DA264C /* MediaMessageModel.swift */; };
+		573DD79E2C48F42C00DA264C /* AtUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD79D2C48F42C00DA264C /* AtUser.swift */; };
+		573DD7A02C48F50B00DA264C /* VideoMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD79F2C48F50B00DA264C /* VideoMessageModel.swift */; };
+		573DD7A22C48FD1200DA264C /* JsonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7A12C48FD1200DA264C /* JsonTool.swift */; };
+		573DD7A72C48FEE200DA264C /* MessageDBModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7A62C48FEE200DA264C /* MessageDBModel2.swift */; };
+		573DD7A92C48FFC400DA264C /* MessageDBModel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7A82C48FFC400DA264C /* MessageDBModel3.swift */; };
+		573DD7B52C49107F00DA264C /* CardMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7B42C49107F00DA264C /* CardMessageModel.swift */; };
+		573DD7B72C4910AE00DA264C /* LocationMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7B62C4910AE00DA264C /* LocationMessageModel.swift */; };
+		573DD7B92C4910D100DA264C /* FileMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7B82C4910D100DA264C /* FileMessageModel.swift */; };
+		573DD7BB2C49110F00DA264C /* NoticeMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7BA2C49110F00DA264C /* NoticeMessageModel.swift */; };
+		573DD7BD2C49113B00DA264C /* CallMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7BC2C49113B00DA264C /* CallMessageModel.swift */; };
 		79BA374450E22321EF2BBC49 /* Pods_StudyWCDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF952CDF2193C50772B69EAA /* Pods_StudyWCDB.framework */; };
 		A9C5E711DAE6D2F2A0915B72 /* Pods_StudyWCDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E3F30F44DBCB67410ADC0 /* Pods_StudyWCDBTests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +86,20 @@
 		529743F22C457703008221BE /* StudyWCDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyWCDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		529743F62C457703008221BE /* StudyWCDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyWCDBUITests.swift; sourceTree = "<group>"; };
 		529743F82C457703008221BE /* StudyWCDBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyWCDBUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		573DD7932C48E27200DA264C /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		573DD7952C48EB4200DA264C /* TextMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessageModel.swift; sourceTree = "<group>"; };
+		573DD7972C48EB5D00DA264C /* ImageMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMessageModel.swift; sourceTree = "<group>"; };
+		573DD7992C48EBAB00DA264C /* MediaMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaMessageModel.swift; sourceTree = "<group>"; };
+		573DD79D2C48F42C00DA264C /* AtUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtUser.swift; sourceTree = "<group>"; };
+		573DD79F2C48F50B00DA264C /* VideoMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMessageModel.swift; sourceTree = "<group>"; };
+		573DD7A12C48FD1200DA264C /* JsonTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTool.swift; sourceTree = "<group>"; };
+		573DD7A62C48FEE200DA264C /* MessageDBModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDBModel2.swift; sourceTree = "<group>"; };
+		573DD7A82C48FFC400DA264C /* MessageDBModel3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDBModel3.swift; sourceTree = "<group>"; };
+		573DD7B42C49107F00DA264C /* CardMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMessageModel.swift; sourceTree = "<group>"; };
+		573DD7B62C4910AE00DA264C /* LocationMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMessageModel.swift; sourceTree = "<group>"; };
+		573DD7B82C4910D100DA264C /* FileMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMessageModel.swift; sourceTree = "<group>"; };
+		573DD7BA2C49110F00DA264C /* NoticeMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeMessageModel.swift; sourceTree = "<group>"; };
+		573DD7BC2C49113B00DA264C /* CallMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallMessageModel.swift; sourceTree = "<group>"; };
 		9B079AF38819E0094F627491 /* Pods-StudyWCDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyWCDB.release.xcconfig"; path = "Target Support Files/Pods-StudyWCDB/Pods-StudyWCDB.release.xcconfig"; sourceTree = "<group>"; };
 		AB34F95EEE310057AD49834B /* Pods-StudyWCDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyWCDBTests.debug.xcconfig"; path = "Target Support Files/Pods-StudyWCDBTests/Pods-StudyWCDBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB92A11C8B0C2AD350D630FA /* Pods-StudyWCDB-StudyWCDBUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyWCDB-StudyWCDBUITests.release.xcconfig"; path = "Target Support Files/Pods-StudyWCDB-StudyWCDBUITests/Pods-StudyWCDB-StudyWCDBUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				525EAA3E2C46C97000FA87A3 /* PathTool.swift */,
+				573DD7A12C48FD1200DA264C /* JsonTool.swift */,
 				525EAA3F2C46C97000FA87A3 /* WCDBTool.swift */,
 				525EAA4D2C4813F700FA87A3 /* Message */,
 				525EAA422C46C97600FA87A3 /* WebSite */,
@@ -143,8 +172,10 @@
 		525EAA4D2C4813F700FA87A3 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				525EAA4E2C48146000FA87A3 /* MessageDBModel.swift */,
 				525EAA502C48201D00FA87A3 /* MessageDBWorker.swift */,
+				525EAA4E2C48146000FA87A3 /* MessageDBModel.swift */,
+				573DD7A62C48FEE200DA264C /* MessageDBModel2.swift */,
+				573DD7A82C48FFC400DA264C /* MessageDBModel3.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -174,6 +205,7 @@
 		529743D42C4576FC008221BE /* StudyWCDB */ = {
 			isa = PBXGroup;
 			children = (
+				573DD79B2C48F3C000DA264C /* Model */,
 				525EAA3D2C46C93B00FA87A3 /* DB */,
 				529743D52C4576FC008221BE /* AppDelegate.swift */,
 				529743D72C4576FC008221BE /* SceneDelegate.swift */,
@@ -201,6 +233,32 @@
 				529743F82C457703008221BE /* StudyWCDBUITestsLaunchTests.swift */,
 			);
 			path = StudyWCDBUITests;
+			sourceTree = "<group>";
+		};
+		573DD79B2C48F3C000DA264C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				573DD79C2C48F3CA00DA264C /* Message */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		573DD79C2C48F3CA00DA264C /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				573DD7932C48E27200DA264C /* MessageModel.swift */,
+				573DD7952C48EB4200DA264C /* TextMessageModel.swift */,
+				573DD7992C48EBAB00DA264C /* MediaMessageModel.swift */,
+				573DD7972C48EB5D00DA264C /* ImageMessageModel.swift */,
+				573DD79F2C48F50B00DA264C /* VideoMessageModel.swift */,
+				573DD7B42C49107F00DA264C /* CardMessageModel.swift */,
+				573DD7B62C4910AE00DA264C /* LocationMessageModel.swift */,
+				573DD7BA2C49110F00DA264C /* NoticeMessageModel.swift */,
+				573DD7B82C4910D100DA264C /* FileMessageModel.swift */,
+				573DD7BC2C49113B00DA264C /* CallMessageModel.swift */,
+				573DD79D2C48F42C00DA264C /* AtUser.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		59386DF8CF10497E256FA5A6 /* Pods */ = {
@@ -470,13 +528,27 @@
 				525EAA412C46C97000FA87A3 /* WCDBTool.swift in Sources */,
 				525EAA442C46C98A00FA87A3 /* WebSiteDBModel.swift in Sources */,
 				525EAA472C46C99400FA87A3 /* ScoreDBModel.swift in Sources */,
+				573DD7A02C48F50B00DA264C /* VideoMessageModel.swift in Sources */,
 				525EAA512C48201D00FA87A3 /* MessageDBWorker.swift in Sources */,
+				573DD7942C48E27200DA264C /* MessageModel.swift in Sources */,
+				573DD7A92C48FFC400DA264C /* MessageDBModel3.swift in Sources */,
+				573DD7BD2C49113B00DA264C /* CallMessageModel.swift in Sources */,
 				525EAA4F2C48146000FA87A3 /* MessageDBModel.swift in Sources */,
+				573DD79A2C48EBAC00DA264C /* MediaMessageModel.swift in Sources */,
+				573DD7A22C48FD1200DA264C /* JsonTool.swift in Sources */,
 				525EAA4C2C46CA4200FA87A3 /* StudentDBWorker.swift in Sources */,
+				573DD7A72C48FEE200DA264C /* MessageDBModel2.swift in Sources */,
 				525EAA4A2C46C9A600FA87A3 /* WebSiteDBWorker.swift in Sources */,
+				573DD7982C48EB5D00DA264C /* ImageMessageModel.swift in Sources */,
+				573DD7962C48EB4200DA264C /* TextMessageModel.swift in Sources */,
+				573DD79E2C48F42C00DA264C /* AtUser.swift in Sources */,
 				525EAA482C46C99400FA87A3 /* StudentDBModel.swift in Sources */,
+				573DD7B52C49107F00DA264C /* CardMessageModel.swift in Sources */,
+				573DD7BB2C49110F00DA264C /* NoticeMessageModel.swift in Sources */,
 				529743D62C4576FC008221BE /* AppDelegate.swift in Sources */,
+				573DD7B72C4910AE00DA264C /* LocationMessageModel.swift in Sources */,
 				529743D82C4576FC008221BE /* SceneDelegate.swift in Sources */,
+				573DD7B92C4910D100DA264C /* FileMessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

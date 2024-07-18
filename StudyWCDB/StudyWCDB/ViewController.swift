@@ -105,26 +105,45 @@ class ViewController: UIViewController {
         let list3 = worker.getWebsitesNameLike(likeExp: "g%")
         let list4 = worker.getWebsitesNameLike(likeExp: "%goo%")
         let list5 = worker.getWebsitesNameREGEXP(regExp: "%goo%")
-        print(list)
+        print(list, ob, count, countryCount1, countryCount2, avg, max, min, sum)
+        print(list2, list3, list4, list5)
     }
 
     func testMessage() {
         let worker = MessageDBWorker()
-        if let count = worker.getMsgCount(), count == 0 {
+        // 复杂类型，需要有个专门的类转一遍
+        if let count = worker.getMsgCount2(), count == 0 {
             // 没有数据，更新数据
             let datas = Array.init(repeating: 0, count: 10)
             let msgs = datas.map {_ in
-                let msg = MessageDBModel()
+                let messageType = MessageType(rawValue: Int32.random(in: 0..<3))
+                let msg = MessageModel.model(messageType: messageType)
+                if let msgVal = msg as? TextMessageModel {
+                    
+                } else if let msgVal = msg as? VideoMessageModel {
+                    msgVal.fileSize = 10
+                    msgVal.fileName = "fileName-video"
+                    msgVal.url = "videoUrl"
+                } else if let msgVal = msg as? ImageMessageModel {
+                    msgVal.fileSize = 10
+                    msgVal.fileName = "fileName-iamge"
+                    msgVal.url = "imageUrl"
+                    msgVal.width = 100
+                    msgVal.height = 200
+                    msgVal.thumbFileName = "thumbFile"
+                    msgVal.thumbUrl = "image-thumUrl"
+                }
                 msg.msgId = Int64.random(in: 1000..<10000)
                 msg.flag = Int64.random(in: 1000..<10000)
                 msg.chatType = ChatType(rawValue: Int32.random(in: 0..<2))
-                msg.messageType = MessageType(rawValue: Int32.random(in: 0..<3))
+                msg.messageType = messageType
                 msg.content = "msg hello \(Int64.random(in: 1000..<10000))"
                 let refMsg = RefMessage()
                 refMsg.msgId = Int64.random(in: 1000..<10000)
-                refMsg.chatType = ChatType(rawValue: Int32.random(in: 0..<2))
-                refMsg.messageType = MessageType(rawValue: Int32.random(in: 0..<3))
-                refMsg.content = "refMsg world \(Int64.random(in: 1..<10))"
+                refMsg.content = "refMsg content world \(Int64.random(in: 1..<10))"
+                refMsg.type = MessageType(rawValue: Int32.random(in: 1...6))
+                refMsg.uid = Int64.random(in: 1...6)
+                refMsg.nickname = "refMsg nick name \(Int64.random(in: 1..<10))"
                 msg.refMsg = refMsg
                 return msg
             }
@@ -134,7 +153,7 @@ class ViewController: UIViewController {
             print(result)
         }
         // 查询数据
-        let list = worker.getMessages()
+        let list = worker.getMessages3()
         print(list)
     }
 }
