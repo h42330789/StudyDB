@@ -32,7 +32,7 @@ class StudentDBWorker {
         let db = Database(at: dbPath)
         do {
             // 没有on就是全量字段插入
-            let val = try db.getValue(on: StudentDBModel.Properties.stuId.count(), fromTable: StudentDBModel.tableName)
+            let val = try db.getValue(on: StudentDBModel.Properties.id.count(), fromTable: StudentDBModel.tableName)
             return val.intValue
         } catch {
             print(error)

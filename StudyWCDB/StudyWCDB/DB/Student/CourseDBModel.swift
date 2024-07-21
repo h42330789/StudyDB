@@ -1,43 +1,37 @@
 //
-//  StudentDBModel.swift
+//  CourseDBModel.swift
 //  StudyWCDB
 //
-//  Created by MacBook Pro on 7/16/24.
+//  Created by MacBook Pro on 7/21/24.
 //
 
 import Foundation
 import WCDBSwift
 
-final class StudentDBModel: TableCodable {
+final class CourseDBModel: TableCodable {
     var id: Int? = nil // 自增id
-    var studentId: Int? = nil // 学号
-    var name: String? = nil // 名字
-    var age: Int? = nil // 年龄
-    var classId: Int? = nil // 班级id
-    var createTime: Date? = nil // 创建时间
+    var corseId: Int? = nil // 课程id
+    var corseName: String? = nil // 课程名称
    
     // 定义表字段
     enum CodingKeys: String, CodingTableKey {
-        typealias Root = StudentDBModel
+        typealias Root = CourseDBModel
         static let objectRelationalMapping = TableBinding(CodingKeys.self) {
             // 对数据库字段进行约束，不特殊设置的字段就是默认设置
             // id字段设置成主键，自增长
             BindColumnConstraint(id, isPrimary: true, isAutoIncrement: true)
-            // studentId字段设置为非空
-            BindColumnConstraint(studentId, isNotNull: true)
+            // corseId字段设置为非空
+            BindColumnConstraint(corseId, isNotNull: true)
         }
         
         case id
-        case studentId
-        case name
-        case age
-        case classId
-        case createTime
+        case corseId
+        case corseName
     }
     
     // 一般ORM，一个model对应一个table
     static var tableName: String {
-        return "Students"
+        return "corses"
     }
 }
 

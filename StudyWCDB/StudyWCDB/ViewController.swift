@@ -34,7 +34,7 @@ class ViewController: UIViewController {
             ]
             let stus = datas.map {
                 let stu = StudentDBModel()
-                stu.stuId = $0["id"] as? Int
+                stu.studentId = $0["id"] as? Int
                 stu.name = $0["name"] as? String
                 stu.age = $0["age"] as? Int
                 return stu
