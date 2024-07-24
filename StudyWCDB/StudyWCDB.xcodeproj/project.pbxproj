@@ -19,6 +19,11 @@
 		525EAA512C48201D00FA87A3 /* MessageDBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA502C48201D00FA87A3 /* MessageDBWorker.swift */; };
 		525EAA532C4D544100FA87A3 /* CourseDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA522C4D544100FA87A3 /* CourseDBModel.swift */; };
 		525EAA552C4D55BF00FA87A3 /* ClassDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA542C4D55BF00FA87A3 /* ClassDBModel.swift */; };
+		525EAA582C5147E100FA87A3 /* BookDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA572C5147E100FA87A3 /* BookDBModel.swift */; };
+		525EAA5A2C5147EF00FA87A3 /* BookDBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA592C5147EF00FA87A3 /* BookDBWorker.swift */; };
+		525EAA5D2C51586C00FA87A3 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA5C2C51586C00FA87A3 /* PeopleModel.swift */; };
+		525EAA5F2C51587700FA87A3 /* PeopleDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA5E2C51587700FA87A3 /* PeopleDBModel.swift */; };
+		525EAA612C51588100FA87A3 /* PeopleDBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA602C51588100FA87A3 /* PeopleDBWorker.swift */; };
 		529743D62C4576FC008221BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529743D52C4576FC008221BE /* AppDelegate.swift */; };
 		529743D82C4576FC008221BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529743D72C4576FC008221BE /* SceneDelegate.swift */; };
 		529743DA2C4576FC008221BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529743D92C4576FC008221BE /* ViewController.swift */; };
@@ -77,6 +82,11 @@
 		525EAA502C48201D00FA87A3 /* MessageDBWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDBWorker.swift; sourceTree = "<group>"; };
 		525EAA522C4D544100FA87A3 /* CourseDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDBModel.swift; sourceTree = "<group>"; };
 		525EAA542C4D55BF00FA87A3 /* ClassDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDBModel.swift; sourceTree = "<group>"; };
+		525EAA572C5147E100FA87A3 /* BookDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDBModel.swift; sourceTree = "<group>"; };
+		525EAA592C5147EF00FA87A3 /* BookDBWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDBWorker.swift; sourceTree = "<group>"; };
+		525EAA5C2C51586C00FA87A3 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
+		525EAA5E2C51587700FA87A3 /* PeopleDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDBModel.swift; sourceTree = "<group>"; };
+		525EAA602C51588100FA87A3 /* PeopleDBWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDBWorker.swift; sourceTree = "<group>"; };
 		529743D22C4576FC008221BE /* StudyWCDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyWCDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529743D52C4576FC008221BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		529743D72C4576FC008221BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +166,8 @@
 		525EAA3D2C46C93B00FA87A3 /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				525EAA5B2C51583300FA87A3 /* People */,
+				525EAA562C5147C900FA87A3 /* Books */,
 				525EAA3E2C46C97000FA87A3 /* PathTool.swift */,
 				573DD7A12C48FD1200DA264C /* JsonTool.swift */,
 				525EAA3F2C46C97000FA87A3 /* WCDBTool.swift */,
@@ -184,6 +196,25 @@
 				573DD7A82C48FFC400DA264C /* MessageDBModel3.swift */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		525EAA562C5147C900FA87A3 /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				525EAA572C5147E100FA87A3 /* BookDBModel.swift */,
+				525EAA592C5147EF00FA87A3 /* BookDBWorker.swift */,
+			);
+			path = Books;
+			sourceTree = "<group>";
+		};
+		525EAA5B2C51583300FA87A3 /* People */ = {
+			isa = PBXGroup;
+			children = (
+				525EAA5C2C51586C00FA87A3 /* PeopleModel.swift */,
+				525EAA5E2C51587700FA87A3 /* PeopleDBModel.swift */,
+				525EAA602C51588100FA87A3 /* PeopleDBWorker.swift */,
+			);
+			path = People;
 			sourceTree = "<group>";
 		};
 		529743C92C4576FC008221BE = {
@@ -529,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525EAA5A2C5147EF00FA87A3 /* BookDBWorker.swift in Sources */,
 				525EAA402C46C97000FA87A3 /* PathTool.swift in Sources */,
 				529743DA2C4576FC008221BE /* ViewController.swift in Sources */,
 				525EAA412C46C97000FA87A3 /* WCDBTool.swift in Sources */,
@@ -538,11 +570,14 @@
 				525EAA552C4D55BF00FA87A3 /* ClassDBModel.swift in Sources */,
 				525EAA512C48201D00FA87A3 /* MessageDBWorker.swift in Sources */,
 				573DD7942C48E27200DA264C /* MessageModel.swift in Sources */,
+				525EAA5F2C51587700FA87A3 /* PeopleDBModel.swift in Sources */,
 				573DD7A92C48FFC400DA264C /* MessageDBModel3.swift in Sources */,
 				573DD7BD2C49113B00DA264C /* CallMessageModel.swift in Sources */,
 				525EAA4F2C48146000FA87A3 /* MessageDBModel.swift in Sources */,
 				573DD79A2C48EBAC00DA264C /* MediaMessageModel.swift in Sources */,
+				525EAA612C51588100FA87A3 /* PeopleDBWorker.swift in Sources */,
 				525EAA532C4D544100FA87A3 /* CourseDBModel.swift in Sources */,
+				525EAA582C5147E100FA87A3 /* BookDBModel.swift in Sources */,
 				573DD7A22C48FD1200DA264C /* JsonTool.swift in Sources */,
 				525EAA4C2C46CA4200FA87A3 /* StudentDBWorker.swift in Sources */,
 				573DD7A72C48FEE200DA264C /* MessageDBModel2.swift in Sources */,
@@ -556,6 +591,7 @@
 				529743D62C4576FC008221BE /* AppDelegate.swift in Sources */,
 				573DD7B72C4910AE00DA264C /* LocationMessageModel.swift in Sources */,
 				529743D82C4576FC008221BE /* SceneDelegate.swift in Sources */,
+				525EAA5D2C51586C00FA87A3 /* PeopleModel.swift in Sources */,
 				573DD7B92C4910D100DA264C /* FileMessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

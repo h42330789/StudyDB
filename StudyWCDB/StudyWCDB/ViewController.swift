@@ -19,9 +19,84 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
 //        testStu()
 //        testWebSite()
-        testMessage()
+//        testMessage()
+//        testBook()
+        testPeople()
         
         
+    }
+    func testPeople() {
+        let worker = PeopleDBWorker()
+        // 设置数据
+        let datas = [
+            ["name": "李白",
+             "age": 1000,
+             "height": 184.0,
+             "isMarried": false,
+             "birthDate": Date(),
+             "loveBooks": ["史记","论语"],
+             "gender": 0,
+             "loveSport": "basketball",
+             "pet": ["name": "xiaowang","age": 5, "type": 1],
+             "extra": ["fater":"who","pic":"http://www.baidu.com"]
+            ]
+        ]
+        let models = datas.map {
+            let model = PeopleModel()
+            model.name = $0["name"] as? String
+            model.age = $0["age"] as? Int
+            model.height = $0["height"] as? Double
+            model.isMarried = $0["isMarried"] as? Bool
+            model.birthDate = $0["birthDate"] as? Date
+            model.loveBooks = $0["loveBooks"] as? [String]
+            if let val = $0["gender"] as? Int {
+                model.gender = Gender(rawValue:  val)
+            }
+            if let val = $0["loveSport"] as? String {
+                model.loveSport = SportType(rawValue:  val)
+            }
+            if let val = $0["pet"] as? [String: Any] {
+                if let name = val["name"] as? String,
+                   let age = val["age"] as? Int,
+                   let type = val["type"] as? Int,
+                   let petType = Pet.PetType(rawValue: type) {
+                    model.pet = Pet(name: name, age: age, type: petType)
+                }
+            }
+            model.extra = $0["extra"] as? [String: Any]
+            return model
+        }
+        let result = worker.addPeoples(list: models)
+        let resultList = worker.selectPeoples()
+        print(result, resultList)
+    }
+    
+    
+    func testBook() {
+        let worker = BookDBWorker()
+        // 设置数据
+        let datas = [
+            ["name": "大学高数",
+             "picUrl": "https://bkimg.cdn.bcebos.com/pic/9922720e0cf3d7ca41810db7f21fbe096a63a9ff",
+             "desc": "高等数学是初等数学与大学阶段的高等数学的过渡",
+             "price": 99],
+            
+            ["name": "穷爸爸富爸爸",
+             "picUrl": "https://bkimg.cdn.bcebos.com/pic/e4dde71190ef76c61eca1e0f9f16fdfaaf5167fe",
+             "desc": "该书讲述了清崎有两个爸爸：“穷爸爸”是他的亲生父亲，一个高学历的教育官员",
+             "price": 100],
+        ]
+        let models = datas.map {
+            let model = BookDBModel()
+            model.name = $0["name"] as? String
+            model.picUrl = $0["picUrl"] as? String
+            model.desc = $0["desc"] as? String
+            return model
+        }
+        let result = worker.addBooks(books: models)
+        let books = worker.selectBooks()
+        let book = worker.selectBook(name: "穷爸爸富爸爸")
+        print(result, books, book)
     }
     
     func testStu() {
