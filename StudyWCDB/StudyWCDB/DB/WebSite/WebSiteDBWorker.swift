@@ -249,4 +249,56 @@ class WebSiteDBWorker {
             return []
         }
     }
+    
+    // MARK: - 复杂组合查询
+    func searchWebsites(keywords: String?, inUids: [Int64]? = nil, idStart: Int64? = nil, idEnd: Int64? = nil, notInIds:[Int64]? = nil, pageSize: Int? = nil, pageNum: Int? = nil) -> [WebSiteDBModel]? {
+        // 多查询条件组合
+        var exps: [Expression] = []
+        // 如果存在关键字
+        if let words = keywords, words.count > 0 {
+            let exp1 = WebSiteDBModel.Properties.name.like("%\(words)%")
+            if let inUids = inUids, inUids.count > 0 {
+                let exp2 = WebSiteDBModel.Properties.id.in(inUids)
+                exps.append(exp1 || exp2)
+            } else {
+                exps.append(exp1)
+            }
+        }
+        // 如果存在start\end
+        if let start = idStart, let end = idEnd {
+            exps.append(WebSiteDBModel.Properties.id.between(start, end))
+        }
+        // 如果存在notInIds
+        if let notInIds = notInIds, notInIds.count > 0 {
+            exps.append(WebSiteDBModel.Properties.id.notIn(notInIds))
+        }
+        // 将所有条件按&&组合起来
+        var conditions: Expression? = nil
+        for exp in exps {
+            if let preExp = conditions {
+                conditions = preExp && exp
+            } else {
+                conditions = exp
+            }
+        }
+        // 2、组合排序规则
+        var orderBys: [OrderingTerm] = []
+        orderBys.append(WebSiteDBModel.Properties.name.order(.ascending))
+        orderBys.append(WebSiteDBModel.Properties.alexa.order(.descending))
+        // 3、分页
+        var offset: Int? = nil
+        if let pageNum = pageNum, pageNum > 0,
+           let pageSize = pageSize, pageSize > 0 {
+            offset = pageNum*pageSize
+        }
+        // 真正查询
+        let db = Database(at: dbPath)
+        do {
+            let objs: [WebSiteDBModel] = try db.getObjects(on: WebSiteDBModel.Properties.all, fromTable: WebSiteDBModel.tableName, where: conditions, orderBy: orderBys, limit: pageSize, offset: offset)
+            return objs
+        } catch {
+            print(error)
+            return nil
+        }
+    }
 }
