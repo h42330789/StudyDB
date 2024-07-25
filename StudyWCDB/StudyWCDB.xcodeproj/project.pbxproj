@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		04EE1B99814546F73A364C2C /* Pods_StudyWCDB_StudyWCDBUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F47530A07318C6049DA36A /* Pods_StudyWCDB_StudyWCDBUITests.framework */; };
+		523B2AB52C5284C000D57E09 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B2AB42C5284C000D57E09 /* Person.swift */; };
+		523B2AB82C5285A500D57E09 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B2AB72C5285A500D57E09 /* Member.swift */; };
+		523B2ABA2C5293D700D57E09 /* MemberDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B2AB92C5293D700D57E09 /* MemberDBModel.swift */; };
+		523B2ABC2C529EE100D57E09 /* MemberDBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B2ABB2C529EE100D57E09 /* MemberDBWorker.swift */; };
 		525EAA402C46C97000FA87A3 /* PathTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA3E2C46C97000FA87A3 /* PathTool.swift */; };
 		525EAA412C46C97000FA87A3 /* WCDBTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA3F2C46C97000FA87A3 /* WCDBTool.swift */; };
 		525EAA442C46C98A00FA87A3 /* WebSiteDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525EAA432C46C98A00FA87A3 /* WebSiteDBModel.swift */; };
@@ -71,6 +75,10 @@
 /* Begin PBXFileReference section */
 		11B023170263F345D08BC797 /* Pods-StudyWCDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyWCDBTests.release.xcconfig"; path = "Target Support Files/Pods-StudyWCDBTests/Pods-StudyWCDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		14F47530A07318C6049DA36A /* Pods_StudyWCDB_StudyWCDBUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyWCDB_StudyWCDBUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		523B2AB42C5284C000D57E09 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		523B2AB72C5285A500D57E09 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		523B2AB92C5293D700D57E09 /* MemberDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDBModel.swift; sourceTree = "<group>"; };
+		523B2ABB2C529EE100D57E09 /* MemberDBWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDBWorker.swift; sourceTree = "<group>"; };
 		525EAA3E2C46C97000FA87A3 /* PathTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathTool.swift; sourceTree = "<group>"; };
 		525EAA3F2C46C97000FA87A3 /* WCDBTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCDBTool.swift; sourceTree = "<group>"; };
 		525EAA432C46C98A00FA87A3 /* WebSiteDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSiteDBModel.swift; sourceTree = "<group>"; };
@@ -151,6 +159,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		523B2AB32C52846200D57E09 /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				523B2AB42C5284C000D57E09 /* Person.swift */,
+			);
+			path = Person;
+			sourceTree = "<group>";
+		};
+		523B2AB62C52859200D57E09 /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				523B2AB72C5285A500D57E09 /* Member.swift */,
+				523B2AB92C5293D700D57E09 /* MemberDBModel.swift */,
+				523B2ABB2C529EE100D57E09 /* MemberDBWorker.swift */,
+			);
+			path = Member;
+			sourceTree = "<group>";
+		};
 		525EAA3C2C46C93B00FA87A3 /* Student */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +192,8 @@
 		525EAA3D2C46C93B00FA87A3 /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				523B2AB62C52859200D57E09 /* Member */,
+				523B2AB32C52846200D57E09 /* Person */,
 				525EAA5B2C51583300FA87A3 /* People */,
 				525EAA562C5147C900FA87A3 /* Books */,
 				525EAA3E2C46C97000FA87A3 /* PathTool.swift */,
@@ -565,6 +593,7 @@
 				529743DA2C4576FC008221BE /* ViewController.swift in Sources */,
 				525EAA412C46C97000FA87A3 /* WCDBTool.swift in Sources */,
 				525EAA442C46C98A00FA87A3 /* WebSiteDBModel.swift in Sources */,
+				523B2ABA2C5293D700D57E09 /* MemberDBModel.swift in Sources */,
 				525EAA472C46C99400FA87A3 /* ScoreDBModel.swift in Sources */,
 				573DD7A02C48F50B00DA264C /* VideoMessageModel.swift in Sources */,
 				525EAA552C4D55BF00FA87A3 /* ClassDBModel.swift in Sources */,
@@ -574,10 +603,12 @@
 				573DD7A92C48FFC400DA264C /* MessageDBModel3.swift in Sources */,
 				573DD7BD2C49113B00DA264C /* CallMessageModel.swift in Sources */,
 				525EAA4F2C48146000FA87A3 /* MessageDBModel.swift in Sources */,
+				523B2AB52C5284C000D57E09 /* Person.swift in Sources */,
 				573DD79A2C48EBAC00DA264C /* MediaMessageModel.swift in Sources */,
 				525EAA612C51588100FA87A3 /* PeopleDBWorker.swift in Sources */,
 				525EAA532C4D544100FA87A3 /* CourseDBModel.swift in Sources */,
 				525EAA582C5147E100FA87A3 /* BookDBModel.swift in Sources */,
+				523B2AB82C5285A500D57E09 /* Member.swift in Sources */,
 				573DD7A22C48FD1200DA264C /* JsonTool.swift in Sources */,
 				525EAA4C2C46CA4200FA87A3 /* StudentDBWorker.swift in Sources */,
 				573DD7A72C48FEE200DA264C /* MessageDBModel2.swift in Sources */,
@@ -593,6 +624,7 @@
 				529743D82C4576FC008221BE /* SceneDelegate.swift in Sources */,
 				525EAA5D2C51586C00FA87A3 /* PeopleModel.swift in Sources */,
 				573DD7B92C4910D100DA264C /* FileMessageModel.swift in Sources */,
+				523B2ABC2C529EE100D57E09 /* MemberDBWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

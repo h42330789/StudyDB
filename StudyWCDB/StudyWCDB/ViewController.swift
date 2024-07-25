@@ -21,9 +21,93 @@ class ViewController: UIViewController {
 //        testWebSite()
 //        testMessage()
 //        testBook()
-        testPeople()
+//        testPeople()
+        testMember()
         
         
+    }
+    func testMember() {
+        let datas = [
+            ["user": [
+                "uid": 8,
+                "name": "网王",
+                "pic": "http://www.baidu.com",
+                "gender": 1,
+                "friendRelation": [
+                    "isFriend": true,
+                    "remarkName": "汪汪"
+                ],
+                "userOnOrOffline": [
+                    "uid": 8,
+                    "isOnline": true,
+                    "onlineOrOfflineTime": 2341234,
+                    "isShowOnLineStatus": false
+                ],
+            ],
+             "groupID": 1000,
+             "type": 2,
+            ]
+        ]
+        let models = datas.map {
+            var model = GroupMemberInfo()
+            if let userDict = $0["user"] as? [String: Any] {
+                if let val = userDict["uid"] as? Int {
+                    model.user.uid = Int64(val)
+                }
+                if let val = userDict["name"] as? String {
+                    model.user.name = val
+                }
+                if let val = userDict["pic"] as? String {
+                    model.user.pic = val
+                }
+                if let val = userDict["gender"] as? Int,
+                   let typeVal = MemberGender(rawValue: val) {
+                    model.user.gender = typeVal
+                }
+                var userDict = $0["user"] as? [String: Any] ?? [:]
+                if let relationDict = userDict["friendRelation"] as? [String: Any] {
+                    if let val = relationDict["isFriend"] as? Bool {
+                        model.user.friendRelation.isFriend = val
+                    }
+                    if let val = relationDict["remarkName"] as? String {
+                        model.user.friendRelation.remarkName = val
+                    }
+                }
+                if let onlineDict = userDict["userOnOrOffline"] as? [String: Any] {
+                    if let val = onlineDict["uid"] as? Int {
+                        model.user.userOnOrOffline.uid = Int64(val)
+                    }
+                    if let val = onlineDict["isOnline"] as? Bool {
+                        model.user.userOnOrOffline.isOnline = val
+                    }
+                    if let val = onlineDict["onlineOrOfflineTime"] as? Int {
+                        model.user.userOnOrOffline.onlineOrOfflineTime = Int64(val)
+                    }
+                    if let val = onlineDict["isShowOnLineStatus"] as? Bool {
+                        model.user.userOnOrOffline.isShowOnLineStatus = val
+                    }
+                }
+            }
+            if let val = $0["groupID"] as? Int {
+                model.groupID = Int64(val)
+            }
+            if let val = $0["type"] as? Int,
+               let typeVal = MemberType(rawValue: val) {
+                model.type =  typeVal
+            }
+            
+            return model
+        }
+        let worker = MemberDBWorker()
+//        worker.deleteAll()
+        let result = worker.addMembers(list: models)
+        let searchList = worker.allMembers()
+        if var upModel = searchList?.first {
+            upModel.user.friendRelation.remarkName = "马良"
+            let updateResult = worker.update(info: upModel)
+        }
+        let searchList2 = worker.searchMember(remarkName: "马良")
+        print(searchList)
     }
     func testPeople() {
         let worker = PeopleDBWorker()

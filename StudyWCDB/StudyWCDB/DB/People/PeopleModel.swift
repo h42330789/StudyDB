@@ -46,6 +46,12 @@ struct Pet {
     var type: PetType
 }
 
+struct Car {
+    var name: String
+    var price: Double
+    var isNew: Bool
+}
+
 // 不直接使用dbmodel作为业务model使用时为了方便一些自定义字段的使用等
 // PeopleModel - DBWorker(WCDB) - PeopleDBModel
 class PeopleModel {
@@ -58,6 +64,7 @@ class PeopleModel {
     var gender: Gender? // int类型枚举-需要转换才能存
     var loveSport: SportType? // String的枚举-需要转换才能存
     var pet: Pet?// 对象类型-需要转换才能存
+    var car: Car? // 对象类型-需要转换才能存
     var extra: [String: Any]?// 字典类型-需要转换才能存,由于不能直接存，所以使用另一个计算属性来中转
     var extraData: Data? {
         get {
@@ -89,6 +96,7 @@ extension PeopleModel {
         dbInfo.gender = gender
         dbInfo.loveSport = loveSport
         dbInfo.pet = pet
+        dbInfo.car = car
         dbInfo.extraData = extraData
         return dbInfo
     }
@@ -106,6 +114,7 @@ extension PeopleDBModel {
         bizModel.gender = gender
         bizModel.loveSport = loveSport
         bizModel.pet = pet
+        bizModel.car = car
         bizModel.extraData = extraData
         return bizModel
     }
