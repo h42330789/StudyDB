@@ -17,12 +17,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-//        testStu()
+        testStu1()
+        testStu2()
 //        testWebSite()
 //        testMessage()
 //        testBook()
 //        testPeople()
-        testMember()
+//        testMember()
         
         
     }
@@ -103,9 +104,10 @@ class ViewController: UIViewController {
         let result = worker.addMembers(list: models)
         let searchList = worker.allMembers()
         if var upModel = searchList?.first {
-            upModel.user.friendRelation.remarkName = "马良"
-            let updateResult = worker.update(info: upModel)
+            upModel.user.friendRelation.remarkName = "马良\(Int.random(in: 0...9))"
+            
         }
+        let updateResult = worker.update(infos: searchList!)
         let searchList2 = worker.searchMember(remarkName: "马良")
         print(searchList)
     }
@@ -182,8 +184,14 @@ class ViewController: UIViewController {
         let book = worker.selectBook(name: "穷爸爸富爸爸")
         print(result, books, book)
     }
-    
-    func testStu() {
+    func testStu1() {
+        testStuAddData()
+        let worker = StudentDBWorker()
+        worker.selectBySql1()
+        worker.selectBySql2()
+        worker.selectBySql3()
+    }
+    func testStuAddData() {
         let worker = StudentDBWorker()
         if let count = worker.getStuCount(), count == 0 {
             // 没有数据，更新数据
@@ -203,21 +211,29 @@ class ViewController: UIViewController {
             let result = worker.addStus(stus: stus)
             print(result)
             
-            let datas2 = [
-                ["studentId": 21434, "name": "梅梅", "score": 80.0],
-                ["studentId": 345, "name": "梅梅", "score": 65.0],
+        let datas2: [[String: Any]] = [
+                ["studentId": 21434, "score": 80.0,],
+                ["studentId": 345, "score": 65.0],
             ]
             let scores = datas2.map {
                 let score = ScoreDBModel()
-                score.studentId = $0["studentId"] as? Int
+                score.stuId = $0["studentId"] as? Int
                 score.score = $0["score"] as? Double
                 return score
             }
             let result2 = worker.addScore(scores: scores)
             print(result2)
         }
+    }
+    func testStu2() {
+        let worker = StudentDBWorker()
+        testStuAddData()
         // 查询数据
-        worker.getScoreAndStus()
+        worker.selectJoinOn1()
+        worker.selectJoinOn2()
+        worker.selectJoinOn3()
+        worker.selectJoinOn4()
+        worker.selectJoinOn5()
         
     }
     

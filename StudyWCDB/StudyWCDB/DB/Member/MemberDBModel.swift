@@ -114,10 +114,29 @@ extension MemberRelation: ColumnJSONCodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         isFriend = try container.decode(Bool.self, forKey: .isFriend)
         remarkName = try container.decode(String.self, forKey: .remarkName)
-
     }
 }
-
+extension MemberPet: ColumnJSONCodable {
+    
+    
+    // ** 由于class或struct的定义，与extension不在同一个文件里才需要 -- start **/
+    enum CodingKeys: String, CodingKey {
+        case name
+        case age
+    }
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(age, forKey: .age)
+    }
+    
+//    init (from decoder: any Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        let name = try container.decode(String.self, forKey: .name)
+//        let age = try container.decode(Int.self, forKey: .age)
+//        self.init()
+//    }
+}
 // MARK: - 对象类型实现ColumnCodable
 extension UserOnOrOffLine: ColumnJSONCodable {
     // ** 由于class或struct的定义，与extension不在同一个文件里才需要 -- start **/

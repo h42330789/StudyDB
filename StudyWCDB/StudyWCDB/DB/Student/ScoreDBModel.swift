@@ -10,7 +10,7 @@ import WCDBSwift
 
 final class ScoreDBModel: TableCodable {
     var identifier: Int? = nil
-    var studentId: Int? = nil
+    var stuId: Int? = nil
     var score: Double? = nil
    
     enum CodingKeys: String, CodingTableKey {
@@ -20,7 +20,7 @@ final class ScoreDBModel: TableCodable {
         }
         
         case identifier
-        case studentId
+        case stuId
         case score
     }
     

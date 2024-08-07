@@ -72,7 +72,16 @@ class MemberDBWorker {
     }
     func update(info: GroupMemberInfo) -> Bool {
         do {
-            try database?.update(table: GroupMemberDBModel.tableName, on: GroupMemberDBModel.Properties.all, with: info.dbModel)
+            try database?.update(table: GroupMemberDBModel.tableName, on: GroupMemberDBModel.Properties.all, with: [info.dbModel])
+            return true
+        } catch {
+            print(error)
+            return false
+        }
+    }
+    func update(infos: [GroupMemberInfo]) -> Bool {
+        do {
+            try database?.update(table: GroupMemberDBModel.tableName, on: GroupMemberDBModel.Properties.all, with: infos.map {$0.dbModel})
             return true
         } catch {
             print(error)

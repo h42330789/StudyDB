@@ -99,7 +99,16 @@ enum MemberGender {
 
 }
 
-
+class MemberPet {
+    var name: String = ""
+    var age: Int = 0
+    
+    required init(from decoder: Decoder) throws {
+           // 这里只是一个占位符，实际实现会在另一个文件中
+           self.name = ""
+           self.age = 0
+       }
+}
 // 好友关系信息
 struct MemberRelation {
   // 是否好友
