@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 class ViewController: UIViewController {
 
@@ -32,6 +33,16 @@ class ViewController: UIViewController {
             let _ = dict.testGetByObjectForKey(key: i)
         }
         RecordDuration.log(tag: tag, msg: "ready-object-get-E")
+        
+        let webView = WKWebView(frame: CGRect(x: 10, y: 50, width: 200, height: 300))
+        webView.backgroundColor = .orange
+        if #available(iOS 16.4,*) {
+            webView.isInspectable = true
+        } else {
+            // Fallback on earlier versions
+        }
+        self.view.addSubview(webView)
+        webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
     }
 
 
