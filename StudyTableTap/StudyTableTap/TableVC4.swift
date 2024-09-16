@@ -1,21 +1,21 @@
 //
-//  TableVC2.swift
+//  TableVC4.swift
 //  StudyTableTap
 //
-//  Created by MacBook Pro on 9/12/24.
+//  Created by flow on 9/14/24.
 //
 
 import UIKit
 
-class TableVC2: BaseTableVC {
+class TableVC4: BaseTableVC {
     
     override func viewDidLoad() {
-        self.tableView.register(ImageCellB.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(ImageCellD.self, forCellReuseIdentifier: "Cell")
         super.viewDidLoad()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ImageCellB {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ImageCellD {
             let data = self.dataList[indexPath.row]
             cell.updateData(text: data)
             let oldFrame = cell.container.frame
@@ -29,11 +29,11 @@ class TableVC2: BaseTableVC {
     }
 }
 
-
-class ImageCellB: UITableViewCell {
+class ImageCellD: UITableViewCell {
     let container = UIView()
     let descLabel = UILabel()
     var data: String? = nil
+    var touchData: String? = nil
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -64,7 +64,7 @@ class ImageCellB: UITableViewCell {
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         doubleTapGestureRecognizer.numberOfTouchesRequired = 1
         container.addGestureRecognizer(doubleTapGestureRecognizer)
-//        tapGesture.require(toFail: doubleTapGestureRecognizer)
+        tapGesture.require(toFail: doubleTapGestureRecognizer)
         
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(containerLongPress(_:)))
@@ -77,15 +77,30 @@ class ImageCellB: UITableViewCell {
         self.descLabel.text = text
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.touchData = nil
+        print("\(Date.systemDateStr2) touchesBegan: \(data ?? "")")
+        super.touchesBegan(touches, with: event)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("\(Date.systemDateStr2) touchesEnded: \(data ?? "")")
+        self.touchData = data
+        super.touchesEnded(touches, with: event)
+    }
+    
     @objc func containerTapClick() {
-        print("\(Date.systemDateStr2) containerTapClick: \(data ?? "")")
+        print("\(Date.systemDateStr2) containerTapClick: touchData:\(touchData ?? "") data:\(data ?? "")")
+        self.touchData = nil
     }
     
     @objc func containerDoubleTapClick() {
-        print("\(Date.systemDateStr2) containerDoubleTapClick: \(data ?? "")")
+        print("\(Date.systemDateStr2) containerDoubleTapClick: touchData:\(touchData ?? "") data:\(data ?? "")")
+        self.touchData = nil
     }
     
     @objc func containerLongPress(_ gesture: UILongPressGestureRecognizer) {
-        print("\(Date.systemDateStr2) containerLongPress: \(data ?? "")")
+        print("\(Date.systemDateStr2) containerLongPress: touchData:\(touchData ?? "") data:\(data ?? "")")
+        self.touchData = nil
     }
 }

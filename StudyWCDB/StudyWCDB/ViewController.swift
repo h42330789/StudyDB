@@ -24,8 +24,54 @@ class ViewController: UIViewController {
 //        testBook()
 //        testPeople()
 //        testMember()
+//        testShip()
         
         
+    }
+    func testShip() {
+        let datas = [
+            [
+                "engine": 
+                    [
+                        "brand": "Air bus",
+                        "price": 10.0
+                    ],
+             
+                "id": 1000,
+                "name": "海王星号",
+                "color": "white"
+            ]
+        ]
+        let models = datas.map {
+            var model = ShipModel()
+            if let userDict = $0["engine"] as? [String: Any] {
+                if let val = userDict["brand"] as? String {
+                    model.engin.brand = val
+                }
+                if let val = userDict["price"] as? Float {
+                    model.engin.price = Double(val)
+                }
+            }
+            if let val = $0["id"] as? Int {
+                model.id = val
+            }
+            if let val = $0["name"] as? String {
+                model.name = val
+            }
+            if let val = $0["color"] as? String {
+                model.color = val
+            }
+            return model
+        }
+        let worker = ShipDBWorker()
+        let result = worker.addList(list: models)
+        let searchList = worker.allList()
+        let searchList2 = worker.searchModel(brand: "Air")
+        
+        let resultX = worker.addList2(list: models)
+        let searchListX = worker.allList2()
+        let searchListX2 = worker.searchModel2(brand: "Air")
+        print(result, searchList, searchList2)
     }
     func testMember() {
         let datas = [

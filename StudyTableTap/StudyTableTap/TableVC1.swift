@@ -6,28 +6,25 @@
 //
 
 import UIKit
-var mainBounds: CGRect {
-    return UIScreen.main.bounds
-}
-var mainRowHeight: CGFloat {
-    return 120
-}
-var containerWidth: CGFloat {
-    return 200
-}
-class TableVC1: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+class BaseTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     lazy var tableView: UITableView = {
         let v = UITableView(frame: .zero, style: .plain)
         v.delegate = self
         v.dataSource = self
-        v.register(ImageCellA.self, forCellReuseIdentifier: "ImageCellA")
+        v.backgroundColor = .white
+        v.register(UITableViewCell.self, forCellReuseIdentifier: "normalCell")
         return v
     }()
     var inputMenuView = InputMenuView()
-    var dataList: [String] = ["A","B","C","D","E"]
+    var dataList: [String] = ["A","B","C","D","E","F","G"]
+    var titleStr: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.title = self.titleStr
         inputMenuView.frame = CGRect(x: 0, y: mainBounds.height-50, width: mainBounds.width, height: 50)
         let tableHeight = mainBounds.height-inputMenuView.bounds.height
         tableView.frame = CGRect(x: 0, y: 0, width: mainBounds.width, height: tableHeight)
@@ -47,12 +44,12 @@ class TableVC1: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func updateTableHeight(menuHeight: CGFloat) {
-        print("updateTableHeight-start")
+        print("\(Date.systemDateStr2) updateTableHeight-start")
         let tableHeight = mainBounds.height-menuHeight
         UIView.animate(withDuration: 0.2) {
             self.tableView.frame = CGRect(x: 0, y: 0, width: mainBounds.width, height: tableHeight)
         } completion: { _ in
-            print("updateTableHeight-complete")
+            print("\(Date.systemDateStr2) updateTableHeight-complete")
         }
     }
     
@@ -66,7 +63,24 @@ class TableVC1: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return mainRowHeight
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCellA", for: indexPath) as? ImageCellA {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(Date.systemDateStr2) didSelect: \(dataList[indexPath.row])")
+        self.inputMenuView.hideMenu()
+    }
+}
+class TableVC1: BaseTableVC {
+    
+    override func viewDidLoad() {
+        self.tableView.register(ImageCellA.self, forCellReuseIdentifier: "Cell")
+        super.viewDidLoad()
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ImageCellA {
             let data = self.dataList[indexPath.row]
             cell.updateData(text: data)
             let oldFrame = cell.container.frame
@@ -74,14 +88,9 @@ class TableVC1: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.container.frame = CGRect(x: x, y: oldFrame.minY, width: oldFrame.width, height: oldFrame.height)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCellA", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             return cell
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelect: \(dataList[indexPath.row])")
-        self.inputMenuView.hideMenu()
     }
 }
 
@@ -101,6 +110,7 @@ class ImageCellA: UITableViewCell {
     }
     
     func initSelf() {
+        self.backgroundColor = .white
         container.backgroundColor = .lightGray
         let fullWidth = mainBounds.width
         let padding: CGFloat = 10
@@ -116,79 +126,12 @@ class ImageCellA: UITableViewCell {
     }
     
     func updateData(text: String) {
-        print("old: \(data ?? "") new:\(text)")
+//        print("old: \(data ?? "") new:\(text)")
         self.data = text
         self.descLabel.text = text
     }
     
     @objc func containerClick() {
-        print("containerClick: \(data ?? "")")
-    }
-}
-
-class InputMenuView: UIView {
-    let showBtn = UIButton(type: .custom)
-    let sendBtn = UIButton(type: .custom)
-    var isShowing = false
-    
-    typealias ShowBlock = (CGFloat) -> Void
-    typealias SendBlock = (String) -> Void
-    var showOrCloseBlock: ShowBlock? = nil
-    var sendBlock: SendBlock? = nil
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initSelf()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func initSelf() {
-        showBtn.setTitleColor(.black, for: .normal)
-        showBtn.setTitle("open", for: .normal)
-        showBtn.backgroundColor = .systemBlue
-        showBtn.frame = CGRect(x: 40, y: 10, width: 50, height: 30)
-        showBtn.addTarget(self, action: #selector(showBtnClick), for: .touchUpInside)
-        self.addSubview(showBtn)
-        self.backgroundColor = .brown
-        
-        sendBtn.setTitleColor(.black, for: .normal)
-        sendBtn.setTitle("send", for: .normal)
-        sendBtn.backgroundColor = .systemBlue
-        sendBtn.frame = CGRect(x: 40, y: 60, width: 50, height: 30)
-        sendBtn.addTarget(self, action: #selector(sendBtnClick), for: .touchUpInside)
-        self.addSubview(sendBtn)
-    }
-    
-    @objc func showBtnClick() {
-        self.isShowing = !isShowing
-        changeShow()
-    }
-    func hideMenu() {
-        if self.isShowing == false {
-            return
-        }
-        self.isShowing = false
-        changeShow()
-    }
-    func changeShow() {
-        var totalHeight: CGFloat = 50
-        if self.isShowing {
-            totalHeight = totalHeight + 200
-        }
-        showBtn.setTitle(isShowing ? "close" : "open", for: .normal)
-        let y = mainBounds.height - totalHeight
-        print("showBtnClick-start")
-        UIView.animate(withDuration: 0.2) {
-            self.frame = CGRect(x: 0, y: y, width: mainBounds.width, height: totalHeight)
-        } completion: { _ in
-            print("showBtnClick-complete")
-        }
-        showOrCloseBlock?(totalHeight)
-    }
-    
-    @objc func sendBtnClick() {
-        sendBlock?("send-\(Int.random(in: 0...999))")
+        print("\(Date.systemDateStr2) containerClick: \(data ?? "")")
     }
 }

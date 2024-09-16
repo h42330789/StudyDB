@@ -1,21 +1,21 @@
 //
-//  TableVC2.swift
+//  TableVC5.swift
 //  StudyTableTap
 //
-//  Created by MacBook Pro on 9/12/24.
+//  Created by flow on 9/14/24.
 //
 
 import UIKit
 
-class TableVC2: BaseTableVC {
+class TableVC5: BaseTableVC {
     
     override func viewDidLoad() {
-        self.tableView.register(ImageCellB.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(ImageCellE.self, forCellReuseIdentifier: "Cell")
         super.viewDidLoad()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ImageCellB {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ImageCellE {
             let data = self.dataList[indexPath.row]
             cell.updateData(text: data)
             let oldFrame = cell.container.frame
@@ -30,7 +30,7 @@ class TableVC2: BaseTableVC {
 }
 
 
-class ImageCellB: UITableViewCell {
+class ImageCellE: UITableViewCell {
     let container = UIView()
     let descLabel = UILabel()
     var data: String? = nil
@@ -64,7 +64,7 @@ class ImageCellB: UITableViewCell {
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         doubleTapGestureRecognizer.numberOfTouchesRequired = 1
         container.addGestureRecognizer(doubleTapGestureRecognizer)
-//        tapGesture.require(toFail: doubleTapGestureRecognizer)
+        tapGesture.require(toFail: doubleTapGestureRecognizer)
         
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(containerLongPress(_:)))

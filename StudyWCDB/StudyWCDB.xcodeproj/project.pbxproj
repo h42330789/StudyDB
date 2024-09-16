@@ -51,6 +51,10 @@
 		573DD7B92C4910D100DA264C /* FileMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7B82C4910D100DA264C /* FileMessageModel.swift */; };
 		573DD7BB2C49110F00DA264C /* NoticeMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7BA2C49110F00DA264C /* NoticeMessageModel.swift */; };
 		573DD7BD2C49113B00DA264C /* CallMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573DD7BC2C49113B00DA264C /* CallMessageModel.swift */; };
+		579884EA2C648B29008FAB8A /* ShipDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579884E52C648B29008FAB8A /* ShipDBModel.swift */; };
+		579884EB2C648B29008FAB8A /* ShipDBModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579884E62C648B29008FAB8A /* ShipDBModel2.swift */; };
+		579884EC2C648B29008FAB8A /* ShipDBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579884E72C648B29008FAB8A /* ShipDBWorker.swift */; };
+		579884ED2C648B29008FAB8A /* ShipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579884E82C648B29008FAB8A /* ShipModel.swift */; };
 		79BA374450E22321EF2BBC49 /* Pods_StudyWCDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF952CDF2193C50772B69EAA /* Pods_StudyWCDB.framework */; };
 		A9C5E711DAE6D2F2A0915B72 /* Pods_StudyWCDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02E3F30F44DBCB67410ADC0 /* Pods_StudyWCDBTests.framework */; };
 /* End PBXBuildFile section */
@@ -122,6 +126,10 @@
 		573DD7B82C4910D100DA264C /* FileMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMessageModel.swift; sourceTree = "<group>"; };
 		573DD7BA2C49110F00DA264C /* NoticeMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeMessageModel.swift; sourceTree = "<group>"; };
 		573DD7BC2C49113B00DA264C /* CallMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallMessageModel.swift; sourceTree = "<group>"; };
+		579884E52C648B29008FAB8A /* ShipDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipDBModel.swift; sourceTree = "<group>"; };
+		579884E62C648B29008FAB8A /* ShipDBModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipDBModel2.swift; sourceTree = "<group>"; };
+		579884E72C648B29008FAB8A /* ShipDBWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipDBWorker.swift; sourceTree = "<group>"; };
+		579884E82C648B29008FAB8A /* ShipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipModel.swift; sourceTree = "<group>"; };
 		9B079AF38819E0094F627491 /* Pods-StudyWCDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyWCDB.release.xcconfig"; path = "Target Support Files/Pods-StudyWCDB/Pods-StudyWCDB.release.xcconfig"; sourceTree = "<group>"; };
 		AB34F95EEE310057AD49834B /* Pods-StudyWCDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyWCDBTests.debug.xcconfig"; path = "Target Support Files/Pods-StudyWCDBTests/Pods-StudyWCDBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB92A11C8B0C2AD350D630FA /* Pods-StudyWCDB-StudyWCDBUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyWCDB-StudyWCDBUITests.release.xcconfig"; path = "Target Support Files/Pods-StudyWCDB-StudyWCDBUITests/Pods-StudyWCDB-StudyWCDBUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +200,7 @@
 		525EAA3D2C46C93B00FA87A3 /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				579884E92C648B29008FAB8A /* Ship */,
 				523B2AB62C52859200D57E09 /* Member */,
 				523B2AB32C52846200D57E09 /* Person */,
 				525EAA5B2C51583300FA87A3 /* People */,
@@ -324,6 +333,17 @@
 				573DD79D2C48F42C00DA264C /* AtUser.swift */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		579884E92C648B29008FAB8A /* Ship */ = {
+			isa = PBXGroup;
+			children = (
+				579884E52C648B29008FAB8A /* ShipDBModel.swift */,
+				579884E62C648B29008FAB8A /* ShipDBModel2.swift */,
+				579884E72C648B29008FAB8A /* ShipDBWorker.swift */,
+				579884E82C648B29008FAB8A /* ShipModel.swift */,
+			);
+			path = Ship;
 			sourceTree = "<group>";
 		};
 		59386DF8CF10497E256FA5A6 /* Pods */ = {
@@ -604,14 +624,18 @@
 				573DD7BD2C49113B00DA264C /* CallMessageModel.swift in Sources */,
 				525EAA4F2C48146000FA87A3 /* MessageDBModel.swift in Sources */,
 				523B2AB52C5284C000D57E09 /* Person.swift in Sources */,
+				579884EB2C648B29008FAB8A /* ShipDBModel2.swift in Sources */,
 				573DD79A2C48EBAC00DA264C /* MediaMessageModel.swift in Sources */,
 				525EAA612C51588100FA87A3 /* PeopleDBWorker.swift in Sources */,
 				525EAA532C4D544100FA87A3 /* CourseDBModel.swift in Sources */,
 				525EAA582C5147E100FA87A3 /* BookDBModel.swift in Sources */,
 				523B2AB82C5285A500D57E09 /* Member.swift in Sources */,
+				579884EA2C648B29008FAB8A /* ShipDBModel.swift in Sources */,
 				573DD7A22C48FD1200DA264C /* JsonTool.swift in Sources */,
 				525EAA4C2C46CA4200FA87A3 /* StudentDBWorker.swift in Sources */,
+				579884EC2C648B29008FAB8A /* ShipDBWorker.swift in Sources */,
 				573DD7A72C48FEE200DA264C /* MessageDBModel2.swift in Sources */,
+				579884ED2C648B29008FAB8A /* ShipModel.swift in Sources */,
 				525EAA4A2C46C9A600FA87A3 /* WebSiteDBWorker.swift in Sources */,
 				573DD7982C48EB5D00DA264C /* ImageMessageModel.swift in Sources */,
 				573DD7962C48EB4200DA264C /* TextMessageModel.swift in Sources */,

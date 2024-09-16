@@ -9,19 +9,35 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let vcList: [(String, BaseTableVC.Type)] = [
+        ("vc1-didSelect+tap", TableVC1.self),
+        ("vc2-didSelect+tap+doubleTap", TableVC2.self),
+        ("vc22-didSelect+tap+doubleTap-require_toFail", TableVC22.self),
+        ("vc3-didSelect+tap+doubleTap-require_toFail+touchEnd-tapcall", TableVC3.self),
+        ("vc4-didSelect+tap+doubleTap-require_toFail+touchEnd-touchData", TableVC4.self),
+        ("vc5-didSelect+tap+doubleTap-require_toFail+???", TableVC5.self),
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
-        let btn1 = createBtn(title: "vc1", tag: 0)
-        btn1.frame = CGRectMake(20, 100, 150, 40)
-        let btn2 = createBtn(title: "vc2", tag: 1)
-        btn2.frame = CGRectMake(20, 150, 150, 40)
+        self.view.backgroundColor = .white
+        var preBtn: UIButton? = nil
+        for (title, _) in vcList {
+            preBtn = createBtn(title: title, preBtn: preBtn)
+        }
     }
     
-    func createBtn(title: String, tag: Int) -> UIButton {
+    func createBtn(title: String, preBtn: UIButton?) -> UIButton {
         let btn = UIButton(type: .custom)
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(.black, for: .normal)
-        btn.tag = tag
+        btn.titleLabel?.numberOfLines = 0
+        if let preBtn = preBtn {
+            btn.tag = preBtn.tag + 1
+            btn.frame = CGRectMake(20, preBtn.frame.maxY + 10, 350, 80)
+        } else {
+            btn.tag = 0
+            btn.frame = CGRectMake(20, 100, 350, 80)
+        }
         btn.backgroundColor = .systemCyan
         btn.addTarget(self, action: #selector(btnClick(sender:)), for: .touchUpInside)
         self.view.addSubview(btn)
@@ -29,11 +45,11 @@ class ViewController: UIViewController {
     }
 
     @objc func btnClick(sender: UIButton) {
-        if sender.tag == 0 {
-            self.navigationController?.pushViewController(TableVC1(), animated: true)
-        } else {
-            self.navigationController?.pushViewController(TableVC2(), animated: true)
-        }
+        let config = vcList[sender.tag]
+        let vcClz = config.1
+        let vc = vcClz.init()
+        vc.titleStr = config.0
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
