@@ -27,6 +27,13 @@ class TableVC22: BaseTableVC {
             return cell
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? ImageCellB2 {
+            print("\(cell.selfCell) \(Date.systemDateStr2) didSelect: \(dataList[indexPath.row])")
+            self.inputMenuView.hideMenu()
+        }
+    }
 }
 
 
@@ -70,22 +77,25 @@ class ImageCellB2: UITableViewCell {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(containerLongPress(_:)))
         container.addGestureRecognizer(longPressGesture)
     }
-    
+    var selfCell: String {
+        let selfCell = "\(self)".components(separatedBy: ";").first?.components(separatedBy: ".").last ?? ""
+        return selfCell
+    }
     func updateData(text: String) {
-//        print("old: \(data ?? "") new:\(text)")
+        print("\(selfCell) old: \(data ?? "") new:\(text)")
         self.data = text
         self.descLabel.text = text
     }
     
     @objc func containerTapClick() {
-        print("\(Date.systemDateStr2) containerTapClick: \(data ?? "")")
+        print("\(selfCell) \(Date.systemDateStr2) containerTapClick: \(data ?? "")")
     }
     
     @objc func containerDoubleTapClick() {
-        print("\(Date.systemDateStr2) containerDoubleTapClick: \(data ?? "")")
+        print(" \(selfCell) \(Date.systemDateStr2) containerDoubleTapClick: \(data ?? "")")
     }
     
     @objc func containerLongPress(_ gesture: UILongPressGestureRecognizer) {
-        print("\(Date.systemDateStr2) containerLongPress: \(data ?? "")")
+        print("\(selfCell) \(Date.systemDateStr2) containerLongPress: \(data ?? "")")
     }
 }

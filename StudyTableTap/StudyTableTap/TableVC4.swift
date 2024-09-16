@@ -27,6 +27,13 @@ class TableVC4: BaseTableVC {
             return cell
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? ImageCellD {
+            print("\(cell.selfCell) \(Date.systemDateStr2) didSelect: \(dataList[indexPath.row])")
+            self.inputMenuView.hideMenu()
+        }
+    }
 }
 
 class ImageCellD: UITableViewCell {
@@ -70,37 +77,41 @@ class ImageCellD: UITableViewCell {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(containerLongPress(_:)))
         container.addGestureRecognizer(longPressGesture)
     }
+    var selfCell: String {
+        let selfCell = "\(self)".components(separatedBy: ";").first?.components(separatedBy: ".").last ?? ""
+        return selfCell
+    }
     
     func updateData(text: String) {
-//        print("old: \(data ?? "") new:\(text)")
+        print("\(selfCell) old: \(data ?? "") new:\(text)")
         self.data = text
         self.descLabel.text = text
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.touchData = nil
-        print("\(Date.systemDateStr2) touchesBegan: \(data ?? "")")
+        print("\(selfCell) \(Date.systemDateStr2) touchesBegan: \(data ?? "")")
         super.touchesBegan(touches, with: event)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("\(Date.systemDateStr2) touchesEnded: \(data ?? "")")
+        print("\(selfCell) \(Date.systemDateStr2) touchesEnded: \(data ?? "")")
         self.touchData = data
         super.touchesEnded(touches, with: event)
     }
     
     @objc func containerTapClick() {
-        print("\(Date.systemDateStr2) containerTapClick: touchData:\(touchData ?? "") data:\(data ?? "")")
+        print("\(selfCell) \(Date.systemDateStr2) containerTapClick: touchData:\(touchData ?? "") data:\(data ?? "")")
         self.touchData = nil
     }
     
     @objc func containerDoubleTapClick() {
-        print("\(Date.systemDateStr2) containerDoubleTapClick: touchData:\(touchData ?? "") data:\(data ?? "")")
+        print("\(selfCell) \(Date.systemDateStr2) containerDoubleTapClick: touchData:\(touchData ?? "") data:\(data ?? "")")
         self.touchData = nil
     }
     
     @objc func containerLongPress(_ gesture: UILongPressGestureRecognizer) {
-        print("\(Date.systemDateStr2) containerLongPress: touchData:\(touchData ?? "") data:\(data ?? "")")
+        print("\(selfCell) \(Date.systemDateStr2) containerLongPress: touchData:\(touchData ?? "") data:\(data ?? "")")
         self.touchData = nil
     }
 }
